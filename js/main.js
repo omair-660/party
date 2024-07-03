@@ -43,6 +43,10 @@ $(".home").animate({ width: "100%" }, 1000).animate({ height: "74vh" }, 1000, fu
 
 
 $(document).ready(function () {
+
+    $(".load").fadeOut(1000)
+    $("body").css("overflow","visible")
+
     const songOffset = $(".song").offset().top;
     const countOffset = $(".count").offset().top;
     const landingHeight = $(".home").height();
@@ -65,10 +69,10 @@ $(document).ready(function () {
         }
         if ($(window).scrollTop() > landingHeight) {
             $(".scrollTop").fadeIn(500);
-            $(".scrollTop").css({"display" : "flex", "transform" : "translateY(0)"})
+            $(".scrollTop").css({"display" : "flex", "transform" : "translateY(-20px)"})
         }else{
             $(".scrollTop").fadeOut(500);
-            $(".scrollTop").css({"transform" : "translateY(15px)"})
+            $(".scrollTop").css({"transform" : "translateY(20px)"})
         }
     });
 
