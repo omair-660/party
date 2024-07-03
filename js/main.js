@@ -143,6 +143,7 @@ let char = $(".char span");
 let i = 100
 
 textarea.on("input", function (e) {
+    let valu = textarea.val().length;
     let inputType = e.originalEvent.inputType;
     if (inputType == "deleteContentBackward") {
         i++
@@ -150,12 +151,12 @@ textarea.on("input", function (e) {
     } else {
         i--
     }
-    char.html(i);
-    if (i <= 0) {
+    char.html(i-valu);
+    if (i-valu <= 0) {
         char.html(0);
         if(inputType !== "deleteContentBackward"){
             textarea.attr("readonly" , true)
-            $(".er").removeClass("d-none")
+            $(".er").fadeIn(1000)
         }
     }
 })
