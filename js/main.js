@@ -143,19 +143,19 @@ let char = $(".char span");
 let i = 100;
 
 textarea.on("input", function (e) {
-    let valueLength = textarea.val().length;
+    let  = textarea.val().length;
     let inputType = e.originalEvent.inputType;
-
+let lnth = i - valueLength ;
     if (inputType === "deleteContentBackward") { // استخدام === للمقارنة الدقيقة
-        i++;
+        lnth ++;
         textarea.removeAttr("readonly");
     } else {
-        i--;
+        lnth--;
     }
 
-    char.html(i - valueLength); // حساب وتحديث عدد الأحرف المتبقية
+    char.html(lnth); // حساب وتحديث عدد الأحرف المتبقية
 
-    if (i - valueLength <= 0) {
+    if (lnth <= 0) {
         char.html(0);
         if (inputType !== "deleteContentBackward") {
             textarea.attr("readonly", true);
