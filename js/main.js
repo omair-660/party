@@ -21,7 +21,7 @@ $(".close").on("click", function () {
 //     });
 // });
 
-$(".song h3").on("click", function() {
+$(".song h3").on("click", function () {
     const $togle = $(this).next(".togle");
 
     $togle.slideToggle(800);
@@ -33,7 +33,7 @@ $(".song h3").on("click", function() {
 $(".home").animate({ width: "100%" }, 1000).animate({ height: "74vh" }, 1000, function () {
     $(".landing .text h2").fadeIn(1000, function () {
         $(".landing .text p").slideDown(1000, function () {
-            $(".open").show(1000,function(){
+            $(".open").show(1000, function () {
                 $(".open span").fadeIn(500)
             })
         })
@@ -45,12 +45,12 @@ $(".home").animate({ width: "100%" }, 1000).animate({ height: "74vh" }, 1000, fu
 $(document).ready(function () {
 
     $(".load").fadeOut(1000)
-    $("body").css("overflow","visible")
+    $("body").css("overflow", "visible")
 
     const songOffset = $(".song").offset().top;
     const countOffset = $(".count").offset().top;
     const landingHeight = $(".home").height();
-// console.log(landingHeight);
+    // console.log(landingHeight);
     $(window).on('scroll', function () {
         if ($(window).scrollTop() > songOffset) {
             $(".song .container").show(1000);
@@ -59,56 +59,56 @@ $(document).ready(function () {
 
         }
         if ($(window).scrollTop() > countOffset) {
-            $(".count .container").fadeIn(1000,function(){
+            $(".count .container").fadeIn(1000, function () {
                 $(".count .col-md-3").show(1500)
             });
-        }else{
+        } else {
             $(".count .container").hide(1000);
             $(".count .col-md-3").hide(1000)
 
         }
         if ($(window).scrollTop() > landingHeight) {
             $(".scrollTop").fadeIn(500);
-            $(".scrollTop").css({"display" : "flex", "transform" : "translateY(-20px)"})
-        }else{
+            $(".scrollTop").css({ "display": "flex", "transform": "translateY(-20px)" })
+        } else {
             $(".scrollTop").fadeOut(500);
-            $(".scrollTop").css({"transform" : "translateY(20px)"})
+            $(".scrollTop").css({ "transform": "translateY(20px)" })
         }
     });
 
 
 })
 
-$(".scrollTop").on("click",function(){
+$(".scrollTop").on("click", function () {
     $(window).scrollTop(0)
 })
 
 const dateStop = new Date("Jul 26,2024 23:59:59").getTime();
 
 
-const counter = setInterval(function(){
+const counter = setInterval(function () {
 
-    let dateNow =  new Date().getTime();
-    
+    let dateNow = new Date().getTime();
+
     const dateBetween = dateStop - dateNow;
 
 
-    const days = Math.floor(dateBetween /(1000 *60 *60 *24));
+    const days = Math.floor(dateBetween / (1000 * 60 * 60 * 24));
     $(".days").html(days + " D");
 
 
 
-    const hours = Math.floor(dateBetween %(1000 *60 *60 *24) / (1000 *60 *60));
-    $(".hours").html(hours < 10 ? `0${hours} h` : hours +  " h");
+    const hours = Math.floor(dateBetween % (1000 * 60 * 60 * 24) / (1000 * 60 * 60));
+    $(".hours").html(hours < 10 ? `0${hours} h` : hours + " h");
 
 
 
-    const minuts = Math.floor(dateBetween % (1000 * 60 *60) / (1000 * 60));
+    const minuts = Math.floor(dateBetween % (1000 * 60 * 60) / (1000 * 60));
     $(".minuts").html(minuts < 10 ? `0${minuts} m` : minuts + " m");
 
 
 
-    const seconds = Math.floor(dateBetween % (1000 *60) / 1000);
+    const seconds = Math.floor(dateBetween % (1000 * 60) / 1000);
     $(".seconds").html(seconds < 10 ? `0${seconds} s` : seconds + " s");
 
     if (dateBetween <= 0) {
@@ -117,9 +117,48 @@ const counter = setInterval(function(){
     }
 
 
-},1000)
+}, 1000)
 
 
-$("aside a").on("click",function(){
+$("aside a").on("click", function () {
     console.log("hello");
 })
+
+
+// $("textarea").on("input", function (e) {
+//     const i = 100;
+//     $(".char span").html(i--)
+
+//     if (i == 0) {
+//         $(".char span").html(0) ;
+
+//     } else if (e.key == "Backspace") {
+//         $(".char span").html(i++) ;
+//     }
+// })
+
+
+let textarea = $("textarea");
+let char = $(".char span");
+let i = 100
+
+textarea.on("input", function (e) {
+    let inputType = e.originalEvent.inputType;
+    if (inputType == "deleteContentBackward") {
+        i++
+        textarea.removeAttr("readonly");
+    } else {
+        i--
+    }
+    char.html(i);
+    if (i <= 0) {
+        char.html(0);
+        if(inputType !== "deleteContentBackward"){
+            textarea.attr("readonly" , true)
+            $(".er").removeClass("d-none")
+        }
+    }
+})
+
+
+

@@ -89,7 +89,7 @@ display: none;
 .song .active{
     display: block;
 }
-.song .contact,.count .container,.count .col-md-3{
+.song .container ,.count .container,.count .col-md-3{
     display: none;
 }
 .count{
