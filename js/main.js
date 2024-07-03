@@ -159,7 +159,7 @@ let lnth = i - valueLength ;
         char.html(0);
         if (inputType !== "deleteContentBackward") {
             textarea.attr("readonly", true);
-            $(".er").fadeIn(1000); // إظهار رسالة الخطأ
+            $(".er").fadeIn(1000);
         }
     }
 });
