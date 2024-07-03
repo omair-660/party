@@ -53,9 +53,9 @@ $(document).ready(function () {
 // console.log(landingHeight);
     $(window).on('scroll', function () {
         if ($(window).scrollTop() > songOffset) {
-            $(".song .con").show(1000);
+            $(".song .container").show(1000);
         } else {
-            $(".song .con").hide(1000);
+            $(".song .container").hide(1000);
 
         }
         if ($(window).scrollTop() > countOffset) {

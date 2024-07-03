@@ -89,7 +89,7 @@ display: none;
 .song .active{
     display: block;
 }
-.song .con,.count .container,.count .col-md-3{
+.song .contact,.count .container,.count .col-md-3{
     display: none;
 }
 .count{
@@ -221,4 +221,11 @@ display: none;
       margin-top: 0;
     }
   }
-  
+  .song{
+      width: 50%;
+  }
+  @media (max-width:767px) {
+      .song {
+          width: 100%;
+      }
+  }
