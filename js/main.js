@@ -143,7 +143,7 @@ let char = $(".char span");
 let i = 100;
 
 textarea.on("input", function (e) {
-    let  = textarea.val().length;
+    let valueLength = textarea.val().length;
     let inputType = e.originalEvent.inputType;
 let lnth = i - valueLength ;
     if (inputType === "deleteContentBackward") { // استخدام === للمقارنة الدقيقة
@@ -153,7 +153,7 @@ let lnth = i - valueLength ;
         lnth--;
     }
 
-    char.html(lnth); // حساب وتحديث عدد الأحرف المتبقية
+    char.html(lnth); 
 
     if (lnth <= 0) {
         char.html(0);
