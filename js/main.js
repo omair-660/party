@@ -140,26 +140,30 @@ $("aside a").on("click", function () {
 
 let textarea = $("textarea");
 let char = $(".char span");
-let i = 100
+let i = 100;
 
 textarea.on("input", function (e) {
-    let valu = textarea.val().length;
+    let valueLength = textarea.val().length;
     let inputType = e.originalEvent.inputType;
-    if (inputType == "deleteContentBackward") {
-        i++
+
+    if (inputType === "deleteContentBackward") { // استخدام === للمقارنة الدقيقة
+        i++;
         textarea.removeAttr("readonly");
     } else {
-        i--
+        i--;
     }
-    char.html(i-valu);
-    if (i-valu <= 0) {
+
+    char.html(i - valueLength); // حساب وتحديث عدد الأحرف المتبقية
+
+    if (i - valueLength <= 0) {
         char.html(0);
-        if(inputType !== "deleteContentBackward"){
-            textarea.attr("readonly" , true)
-            $(".er").fadeIn(1000)
+        if (inputType !== "deleteContentBackward") {
+            textarea.attr("readonly", true);
+            $(".er").fadeIn(1000); // إظهار رسالة الخطأ
         }
     }
-})
+});
+
 
 
 
