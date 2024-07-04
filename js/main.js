@@ -140,29 +140,30 @@ $("aside a").on("click", function () {
 
 let textarea = $("textarea");
 let char = $(".char span");
-let i = 100;
+let i = 100
 
 textarea.on("input", function (e) {
-    let valueLength = textarea.val().length;
+    let vlue = textarea.val().length;
+    // console.log(vlue);
+    let all = i - vlue;
     let inputType = e.originalEvent.inputType;
-let lnth = i - valueLength ;
-    if (inputType === "deleteContentBackward") { // استخدام === للمقارنة الدقيقة
-        lnth ++;
+    if (inputType == "deleteContentBackward") {
+        all++
         textarea.removeAttr("readonly");
     } else {
-        lnth--;
+        all--
     }
-
-    char.html(lnth); 
-
-    if (lnth <= 0) {
+    char.html(i-vlue);
+    if (all<= 0) {
         char.html(0);
-        if (inputType !== "deleteContentBackward") {
-            textarea.attr("readonly", true);
-            $(".er").fadeIn(1000);
+        if(inputType !== "deleteContentBackward"){
+            textarea.attr("readonly" , true)
+            $(".er").fadeIn(1000)
         }
     }
-});
+})
+
+
 
 
 
