@@ -22,10 +22,10 @@ $(".close").on("click", function () {
 // });
 
 $(".song h3").on("click", function () {
-    const $togle = $(this).next(".togle");
+    const togle = $(this).next(".togle");
 
-    $togle.slideToggle(800);
-    $(".song .togle").not($togle).slideUp(800);
+    togle.slideToggle(800);
+    $(".song .togle").not(togle).slideUp(800);
 });
 
 
@@ -83,7 +83,7 @@ $(".scrollTop").on("click", function () {
     $(window).scrollTop(0)
 })
 
-const dateStop = new Date("Jul 26,2024 23:59:59").getTime();
+const dateStop = new Date("Jul 27,2024 23:59:59").getTime();
 
 
 const counter = setInterval(function () {
@@ -113,7 +113,8 @@ const counter = setInterval(function () {
 
     if (dateBetween <= 0) {
         clearInterval(counter);
-        $(".count .row").html("job fair is day")
+        $(".count").css("height", "300px")
+        $(".count .row").html("<h2 class='text-center p-2 rounded-2 bg-black bg-opacity-50'>job fair is day</h2>")
     }
 
 
@@ -153,18 +154,22 @@ textarea.on("input", function (e) {
     } else {
         all--
     }
-    char.html(i-vlue);
-    if (all<= 0) {
+    char.html(i - vlue);
+    if (all <= 0) {
         char.html(0);
-        if(inputType !== "deleteContentBackward"){
-            textarea.attr("readonly" , true)
+        if (inputType !== "deleteContentBackward") {
+            textarea.attr("readonly", true)
             $(".er").fadeIn(1000)
         }
     }
+    $(".rest").on("click", function () {
+        textarea.val("")
+        i = 100;
+
+        textarea.attr("readonly", false)
+        $(".er").fadeOut(1000)
+    })
 })
-
-
-
 
 
 
